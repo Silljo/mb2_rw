@@ -37,11 +37,6 @@ page-interaktivna-mapa {
     font-size: 1rem;
   }
 
-  .toolbar-title-ios {
-        font-size: 2.4rem;
-        font-weight: normal;
-  }
-
   .scroll-content {
       padding-top: 0 !important;
   }
@@ -50,33 +45,6 @@ page-interaktivna-mapa {
   .bar-button,
   .toolbar-title {
       color: #fff;
-  }
-
-  [title~='Toggle fullscreen view'] {
-    border: 5px solid yellow;
-    padding: 50px !important;
-  }
-
-  div.gm-style-mtc { padding-top: 6rem; }
-
-  .gm-iv-address
-  {
-    margin-top: 90px;
-  }
-
-  .gm-iv-container
-  {
-    margin-top: 85px;
-  }
-
-  .gm-iv-vertical-separator
-  {
-    display: none;
-  }
-
-  .gm-iv-marker
-  {
-    display: none;
   }
 
 

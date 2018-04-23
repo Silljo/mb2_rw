@@ -7,6 +7,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Observable } from 'rxjs/Observable';
 import { DatePipe } from '@angular/common';
+import { DomSanitizer } from '@angular/platform-browser'
 
 
 @IonicPage()
@@ -18,8 +19,9 @@ import { DatePipe } from '@angular/common';
 export class KomunalnoPage {
 
   private komunalno : FormGroup;
-  slika: string;
+  slika: any;
   slika_validation: string;
+  slika_show: any;
   uid: string;
   datum: String = new Date().toISOString();
   prijave_komunalno_data: Observable<any[]>;
@@ -29,7 +31,7 @@ export class KomunalnoPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder, private camera: Camera,
               public db: AngularFireDatabase, public auth: AngularFireAuth, private datePipe: DatePipe, public loadingCtrl: LoadingController,
-              private toast: ToastController) {
+              private toast: ToastController, private sanitizer: DomSanitizer) {
 
     /*
     STATUSI:
@@ -143,6 +145,7 @@ export class KomunalnoPage {
       }
 
       this.slika = '';
+      this.slika_show = '';
 
     });
 
@@ -154,8 +157,6 @@ export class KomunalnoPage {
 
       const options: CameraOptions = {
         quality: 50,
-        targetWidth: 1000,
-        targetHeight: 1000,
         destinationType: this.camera.DestinationType.DATA_URL,
         encodingType: this.camera.EncodingType.JPEG,
         mediaType: this.camera.MediaType.PICTURE,
@@ -167,9 +168,14 @@ export class KomunalnoPage {
       await this.camera.getPicture(options).then((imageData) => {
        // imageData is either a base64 encoded string or a file URI
        // If it's base64:
-
        let base64Image = normalizeURL('data:image/jpeg;base64,' + imageData);
+
+       //slika za sejavnje
        this.slika = base64Image;
+
+       //slika sa svim kurcevim pathovima i tim...
+       this.slika_show = this.sanitizer.bypassSecurityTrustUrl(normalizeURL("data:Image/*;base64,"+imageData));
+
        this.slika_validation = 'true';
 
       }, (err) => {

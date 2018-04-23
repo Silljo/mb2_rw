@@ -94,19 +94,29 @@ export class MyApp {
                 this.firebase_plugin.grantPermission();
             }
 
+            /*
             //Kad smo sigurni da je sve u bazi onda i updejtamo token men
-            this.firebase_plugin.getToken().then(token_firebase => {
+            this.firebase_plugin.onTokenRefresh().subscribe(token_firebase => {
 
               firebase.database().ref('/user_profiles/' + data.uid).update({
                   token: token_firebase
                 });
 
-            }) // save the token server-side and use it to push notifications to this device
-            .catch(error => console.log('Error getting token: ' + error));
+            });*/
 
           }
 
         });
+
+        //Kad smo sigurni da je sve u bazi onda i updejtamo token men
+        this.firebase_plugin.onTokenRefresh().subscribe(token_firebase => {
+
+          firebase.database().ref('/user_profiles/' + data.uid).update({
+              token: token_firebase
+            });
+
+        });
+
 
         if(!this.redirekcija)
         {
