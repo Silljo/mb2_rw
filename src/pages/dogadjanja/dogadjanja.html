@@ -1,0 +1,119 @@
+<ion-header>
+
+  <ion-navbar color="zelena">
+    <button ion-button menuToggle >
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Događanja
+      <span class="navbar_small_subtitle">KULTURNA, SPORTSKA, ZABAVNA</span>
+    </ion-title>
+
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <ion-segment class="segment_class" [(ngModel)]="dogadjanja" color="zelena">
+
+    <ion-segment-button value="kultura">
+      <ion-icon name="ios-color-palette"></ion-icon>
+    </ion-segment-button>
+
+    <ion-segment-button value="sport">
+      <ion-icon name="ios-football"></ion-icon>
+    </ion-segment-button>
+
+    <ion-segment-button value="zabava">
+      <ion-icon name="ios-musical-notes"></ion-icon>
+    </ion-segment-button>
+  </ion-segment>
+
+
+  <div [ngSwitch]="dogadjanja" class="segmet_div">
+
+    <div *ngSwitchCase="'kultura'" class="padding_custom">
+      <timeline endIcon="">
+        <timeline-item *ngFor="let kultura of dogadjanja_kultura | async">
+          <timeline-time [title]="[kultura.datum, kultura.vrijeme]"></timeline-time>
+          <ion-icon class="ion-icon_class" [name]="'calendar'"></ion-icon>
+
+          <ion-card>
+
+            <ion-item>
+              <ion-avatar item-start>
+                <img *ngIf="kultura.slika_avatar != ''" src="{{kultura.slika_avatar}}">
+              </ion-avatar>
+              <h2>{{kultura.naziv}}</h2>
+              <p>{{kultura.lokacija}}</p>
+              <ion-icon name="notifications" color="zelena" item-right (click)="add_notification_reminder(kultura.datum, kultura.vrijeme, kultura.naziv, kultura.lokacija, kultura.slika_avatar)"></ion-icon>
+            </ion-item>
+
+            <div *ngIf="kultura.slika"><img *ngIf="kultura.slika != ''" src="{{kultura.slika}}"></div>
+
+            <ion-card-content>
+              {{kultura.opis}}
+            </ion-card-content>
+
+          </ion-card>
+        </timeline-item>
+      </timeline>
+    </div>
+
+    <div *ngSwitchCase="'sport'" class="padding_custom">
+      <timeline endIcon="">
+        <timeline-item *ngFor="let sport of dogadjanja_sport | async">
+          <timeline-time [title]="[sport.datum, sport.vrijeme]"></timeline-time>
+          <ion-icon class="ion-icon_class" [name]="'calendar'"></ion-icon>
+
+          <ion-card>
+
+            <ion-item>
+              <ion-avatar item-start>
+                <img *ngIf="sport.slika_avatar != ''" src="{{sport.slika_avatar}}">
+              </ion-avatar>
+              <h2>{{sport.naziv}}</h2>
+              <p>{{sport.lokacija}}</p>
+              <ion-icon name="notifications" color="zelena" item-right (click)="add_notification_reminder(sport.datum, sport.vrijeme, sport.naziv, sport.lokacija, sport.slika_avatar)"></ion-icon>
+            </ion-item>
+
+            <div *ngIf="sport.slika"><img src="{{sport.slika}}"></div>
+
+            <ion-card-content>
+              {{sport.opis}}
+            </ion-card-content>
+          </ion-card>
+        </timeline-item>
+      </timeline>
+    </div>
+
+    <div *ngSwitchCase="'zabava'" class="padding_custom">
+      <timeline endIcon="">
+        <timeline-item *ngFor="let zabava of dogadjanja_zabava | async">
+          <timeline-time [title]="[zabava.datum, zabava.vrijeme]"></timeline-time>
+          <ion-icon class="ion-icon_class" [name]="'calendar'"></ion-icon>
+
+          <ion-card>
+
+            <ion-item>
+              <ion-avatar item-start>
+                <img *ngIf="zabava.slika_avatar != ''" src="{{zabava.slika_avatar}}">
+              </ion-avatar>
+              <h2>{{zabava.naziv}}</h2>
+              <p>{{zabava.lokacija}}</p>
+              <ion-icon name="notifications" color="zelena" item-right (click)="add_notification_reminder(zabava.datum, zabava.vrijeme, zabava.naziv, zabava.lokacija, zabava.slika_avatar)"></ion-icon>
+            </ion-item>
+
+            <div *ngIf="zabava.slika" ><img src="{{zabava.slika}}"></div>
+
+            <ion-card-content>
+              {{zabava.opis}}
+            </ion-card-content>
+          </ion-card>
+        </timeline-item>
+      </timeline>
+    </div>
+
+  </div>
+</ion-content>

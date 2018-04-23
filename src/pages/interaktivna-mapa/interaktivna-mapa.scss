@@ -1,0 +1,83 @@
+page-interaktivna-mapa {
+
+  .platform-ios .navbar_small_subtitle
+  {
+    color: #FFF;
+  }
+
+  .navbar_small_subtitle
+  {
+    color: #FFF !important;
+  }
+
+  .scroll {
+        height: 100%
+  }
+
+  #map {
+
+    height: 100%;
+  }
+
+  .row_mapa_show_hide
+  {
+    text-align: center;
+    line-height: 25px;
+    background-color: rgba(224, 224, 224, 0.5);
+    border-radius: 10px;
+    padding: 0px;
+  }
+
+  .footer-md::before, .tabs-md[tabsPlacement="bottom"] > .tabbar::before {
+    background-image: none;
+  }
+
+  .col_mapa_show_hide
+  {
+    font-size: 1rem;
+  }
+
+  .toolbar-title-ios {
+        font-size: 2.4rem;
+        font-weight: normal;
+  }
+
+  .scroll-content {
+      padding-top: 0 !important;
+  }
+
+  .bar-buttons,
+  .bar-button,
+  .toolbar-title {
+      color: #fff;
+  }
+
+  [title~='Toggle fullscreen view'] {
+    border: 5px solid yellow;
+    padding: 50px !important;
+  }
+
+  div.gm-style-mtc { padding-top: 6rem; }
+
+  .gm-iv-address
+  {
+    margin-top: 90px;
+  }
+
+  .gm-iv-container
+  {
+    margin-top: 85px;
+  }
+
+  .gm-iv-vertical-separator
+  {
+    display: none;
+  }
+
+  .gm-iv-marker
+  {
+    display: none;
+  }
+
+
+}

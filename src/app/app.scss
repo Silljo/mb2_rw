@@ -1,16 +1,311 @@
-// http://ionicframework.com/docs/theming/
+/*
+Ovdje imamo stilove za sve detalje page i izbornik za sada
+*/
 
 
-// App Global Sass
-// --------------------------------------------------
-// Put style rules here that you want to apply globally. These
-// styles are for the entire app and not just one component.
-// Additionally, this file can be also used as an entry point
-// to import other Sass files to be included in the output CSS.
-//
-// Shared Sass variables, which can be used to adjust Ionic's
-// default Sass variables, belong in "theme/variables.scss".
-//
-// To declare rules for a specific mode, create a child rule
-// for the .md, .ios, or .wp mode classes. The mode class is
-// automatically applied to the <body> element in the app.
+$zelena_boja: #27793D;
+$plava_kompl: #225764;
+$maslinasta_komp: #6D9530;
+
+.menu_postavke
+{
+  float: right;
+  background-color: transparent;
+  margin-top: 2rem;
+  margin-right: 2rem;
+  position: absolute;
+  right: 0;
+}
+
+.profile_picture
+{
+  margin-left: auto;
+  margin-right: auto;
+  width: 20rem;
+  height: 19rem;
+
+  border-radius: 50rem;
+
+  border-right: 5px;
+  border-right-style: groove;
+  border-right-color: $maslinasta_komp;
+
+  border-left: 5px;
+  border-left-style: groove;
+  border-left-color: $maslinasta_komp;
+
+  background-size: cover;
+  background-position: center left;
+  background-repeat: no-repeat;
+}
+
+.md .menu-inner {
+    background: transparent;
+    background-color: rgba(34,87,100, 0.8);
+}
+
+.ios .menu-inner{
+  background: transparent;
+  background-color: rgba(34,87,100, 0.8);
+}
+
+.div_user_photo_izbornik
+{
+  margin-top: 5%;
+  text-align: center;
+}
+
+.username_icon
+{
+  font-size: 2.5rem;
+  color: #BBB;
+  font-weight: 300;
+}
+
+.email_icon
+{
+  font-size: 1rem;
+  color: #BBB;
+  font-weight: 300;
+}
+
+ion-menu{
+ ion-content{
+  background-color:transparent !important;
+ }
+}
+
+.menu_list
+{
+  margin-top: 4rem;
+
+  .item{
+
+    background-color: rgba(34,87,100, 1);
+    .item-inner {
+
+    }
+  }
+}
+
+.menu_button
+{
+  margin-top: -5px;
+}
+
+.menu_button_nav
+{
+  margin-top: -17px;
+  color: #BBB !important;
+}
+
+.menu_icon_div
+{
+  zoom:200%;
+  margin-left: 5px;
+}
+
+//Tekst izbornika span
+.menu_tekst
+{
+  padding-bottom: 5px;
+  margin-top: 10px;
+  margin-left: 50px;
+  position: absolute;
+  zoom: 40%;
+  width: 100%;
+  color: #BBB;
+
+}
+
+.no_padding
+{
+  padding: 0px !important;
+}
+
+.link
+{
+  text-decoration: none;
+  color: inherit;
+}
+
+.navbar_small_subtitle
+{
+  padding-top: 3px;
+  display: block;
+  font-size: 1rem;
+  font-weight: 300;
+  color: #FFF;
+  width: 100%;
+}
+
+.ikona_custom_menu
+{
+  height: 3rem;
+  width: 3rem;
+}
+
+.icon_back
+{
+  color: rgba(254,254,254, 0.8) !important;
+  background-color: rgba(0,0,0, 0.2);
+  border-bottom-right-radius: 1em;
+  border-top-right-radius: 1em;
+  margin-top: 0.5em;
+}
+
+page-atrakcije-detalji, page-gastro-detalji, page-smjestaj-detalji{
+
+  .icon_back
+  {
+    position: fixed;
+    padding: 20px;
+    font-size: 4em;
+    color: #FFF;
+    z-index: 9999;
+  }
+
+  .wraper_div_main
+  {
+    width: 100%;
+    height: 400px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+
+  .inner_div
+  {
+    position: absolute;
+    top: 286px;
+    width: 100%;
+    height: 114px;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+    font: 150%/1.6 sans-serif;
+    text-align: center;
+    padding-top: 20px;
+  }
+
+  .smjestaj_naziv
+  {
+    font-size: 0.8em;
+    font-weight: 350;
+    display: block;
+    padding-top: 25px;
+    color: #F7A54B;
+  }
+
+  .adresa
+  {
+    font-size: 0.6em;
+    font-weight: 200;
+    color: #F7A54B;
+  }
+
+  .grid_ponuda
+  {
+    background-color: #DDD;
+  }
+
+  .ponuda_ikone
+  {
+    line-height: 2em;
+    font-size: 2em;
+    color: #EEE
+  }
+
+  .main_icons_div
+  {
+    display: table;
+    margin: 0 auto;
+    padding: 10px;
+  }
+
+  .inner_icons_div
+  {
+    margin-left: 5px;
+    margin-right: 5px;
+    text-align: center;
+    width: 4em;
+    height: 4em;
+    float: left;
+    background-color: #CCC;
+    border-radius: 50px;
+  }
+
+  .galerija_img_div
+  {
+    width: inherit;
+    position: absolute;
+  }
+
+  .galerija_image
+  {
+    margin-top: -50em;
+    width: 5em;
+    height: 5em;
+    border-radius: 50%;
+    border: 1px #CCC solid;
+    background-position: center;
+  }
+
+  .galerija_icon
+  {
+    font-size: 3em;
+    opacity: .7;
+  }
+
+  .galerija_div
+  {
+    position: absolute;
+    width: 100%;
+    margin-top: -4.2em;
+  }
+
+  .zvijezdice
+  {
+    background-color: #EEE;
+    text-align: center;
+    color: #F7A54B;
+    font-size: 1.5em;
+  }
+
+  .info_icon
+  {
+    font-size: 1.2em !important;
+  }
+
+  .icon_list
+  {
+    font-size: 2.5em !important;
+  }
+
+  .pull
+  {
+    font-size: 0.5em !important;
+  }
+
+  .kontakt_link
+  {
+    width: 45px;
+  }
+
+  .item_recenzija
+  {
+    background-color: #EEE;
+    padding-right: 0px;
+  }
+
+  .card-content-md {
+    padding: 0px 16px;
+  }
+
+  .item-md.item-block .item-inner {
+    padding-right: 0px;
+  }
+
+  .item-inner, ion-item {
+    border-bottom-color: transparent !important;
+    box-shadow: none !important;
+  }
+}

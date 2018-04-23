@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-navbar color="smedja">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Postavke
+      <span class="navbar_small_subtitle">POSTAVKE KORISNIČKOG RAČUNA</span>
+    </ion-title>
+
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <div class="profile_picture" (click)="slika_user()" *ngIf="korisnik_slika" [style.background-image]="'url(' + this.korisnik_slika + ')'"></div>
+
+  <br>
+
+  <ion-item class="unos_ime_prezime">
+    <ion-label class="labels"><ion-icon color="smedja" name="person"></ion-icon></ion-label>
+    <ion-input class="input_login" color="smedja" text-left type="input" placeholder="Lozinka" value="{{this.korisnik_naziv}}" (input)="username_change($event.target.value)" ></ion-input>
+    <ion-icon color="siva" name="md-create" item-right></ion-icon>
+  </ion-item>
+
+  <br><br>
+
+  <ion-list>
+    <ion-list-header>
+      Notifikacije
+      <button ion-button icon-only item-end clear>
+        <ion-icon name="notifications"></ion-icon>
+      </button>
+    </ion-list-header>
+
+    <ion-item-group>
+      <ion-item>
+        <ion-icon name="md-briefcase" item-start color="narandjasta"></ion-icon>
+        <ion-label>Smještaj</ion-label>
+        <ion-toggle [(ngModel)]="smjestaj_toggle" (ionChange)="subscribe('smjestaj')" color="narandjasta"></ion-toggle>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name="md-restaurant" item-start color="roza"></ion-icon>
+        <ion-label>Gastro</ion-label>
+        <ion-toggle [(ngModel)]="gastro_toggle" (ionChange)="subscribe('gastro')"  color="roza"></ion-toggle>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name="md-list-box" item-start color="zelena"></ion-icon>
+        <ion-label>Događanja</ion-label>
+        <ion-toggle [(ngModel)]="dogadjanja_toggle" (ionChange)="subscribe('dogadjanja')"  color="zelena"></ion-toggle>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name="md-body" item-start color="crna"></ion-icon>
+        <ion-label>Duhovni kutak</ion-label>
+        <ion-toggle [(ngModel)]="duhovni_kutak_toggle" (ionChange)="subscribe('duhovni_kutak')"  color="crna"></ion-toggle>
+      </ion-item>
+
+    </ion-item-group>
+
+  </ion-list>
+
+
+
+</ion-content>

@@ -1,0 +1,82 @@
+page-gastro {
+
+  .segment-ios-secondary .segment-button.segment-activated {
+    background-color: $roza_boja;
+
+    .icon-ios-roza {
+      color: #FFF;
+    }
+
+  }
+
+
+
+  .gastro_content
+  {
+    background-image: url('../assets/img/rozi_gastro_pattern.png');
+    background-size: contain;
+    background-color: #EEEEEE;
+  }
+
+  .main_row
+  {
+    margin-top: 2%;
+  }
+
+  .wraper_div_main
+  {
+    width: 100%;
+    height: 150px;
+    background-repeat: no-repeat;
+    background-position: center right;
+    background-size: cover;
+  }
+
+  .inner_div
+  {
+  	position: inherit;
+  	width: 100%;
+    height: 6rem;
+    margin-top: 50px;
+  	background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+  	font: 100%/1.4 sans-serif;
+  	text-align: left;
+    color: #FFF;
+    padding: 10px;
+    line-height: 14px;
+  }
+
+  .span_naziv_obj
+  {
+    font-size: 16px;
+    font-weight: 300;
+  }
+
+  .span_tip
+  {
+    font-size: 14px;
+    font-weight: 200;
+  }
+
+  .span_ponuda
+  {
+
+    font-size: 12px;
+    font-weight: 100;
+  }
+
+  .span_ikona_open
+  {
+    position: absolute;
+    font-size: 30px;
+    right: 20px;
+    opacity: 0.4;
+  }
+
+  .segment_class
+  {
+    padding: 15px 5px 0px 5px;
+  }
+
+
+}

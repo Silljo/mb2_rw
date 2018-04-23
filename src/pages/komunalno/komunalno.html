@@ -1,0 +1,125 @@
+<ion-header>
+
+  <ion-navbar color="plava">
+    <button ion-button menuToggle >
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Komunalno
+      <span class="navbar_small_subtitle">UNOS I PREGLED ARHIVE NEDOSTATAKA</span>
+    </ion-title>
+
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <br>
+  <ion-segment class="segment_class" [(ngModel)]="komunalno_segment" color="plava">
+
+    <ion-segment-button value="prijava">
+      <ion-icon name="ios-warning" color="plava"></ion-icon>
+    </ion-segment-button>
+
+    <ion-segment-button value="arhiva">
+      <ion-icon name="ios-archive" color="plava"></ion-icon>
+    </ion-segment-button>
+  </ion-segment>
+  <br>
+  <div [ngSwitch]="komunalno_segment">
+
+  <div *ngSwitchCase="'prijava'">
+
+  <form [formGroup]="komunalno" (ngSubmit)="logForm()">
+
+      <ion-list radio-group formControlName="hitnost" no-lines>
+        <ion-list-header class="radio_header">
+          Hitnost:
+        </ion-list-header>
+
+          <ion-item class="margine_prevelike">
+            <ion-label>Visoka</ion-label>
+            <ion-radio value="visoka" color="plava"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label>Srednja</ion-label>
+            <ion-radio value="srednja" color="plava"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label>Niska</ion-label>
+            <ion-radio value="niska" color="plava"></ion-radio>
+          </ion-item>
+      </ion-list>
+
+      <ion-item class="margine_prevelike">
+        <ion-label>Mjesto</ion-label>
+        <ion-input type="text" formControlName="mjesto"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Opis</ion-label>
+        <ion-textarea formControlName="opis"></ion-textarea>
+      </ion-item>
+      <ion-item>
+        <ion-label>Kontakt (mob/tel)</ion-label>
+        <ion-input type="number" formControlName="kontakt"></ion-input>
+      </ion-item>
+      <ion-item no-lines>
+        <ion-card>
+          <ion-card-header style="text-align:center;" (click)="slika_komunalno()">
+            <ion-icon name="camera" color="plava"></ion-icon>
+          </ion-card-header>
+          <img src="{{slika}}"/>
+        </ion-card>
+      </ion-item>
+      <ion-input type="hidden" formControlName="slika" value="{{this.slika_validation}}"></ion-input>
+
+      <ion-grid>
+        <ion-row>
+          <ion-col offset-3 col-6>
+            <button ion-button round full type="submit" color="plava" [disabled]="!komunalno.valid">Pošalji</button>
+            <div *ngIf="!komunalno.valid" class="kumunalno_polja_obavezna">(prije slanja popunite sva polja)</div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+    </form>
+  </div>
+
+    <div *ngSwitchCase="'arhiva'">
+      <ion-card *ngFor="let prijave of prijave_komunalno_data | async" class="no_padding">
+
+        <ion-item>
+          <ion-icon item-right *ngIf="prijave.status == 2" name="md-eye-off"></ion-icon>
+          <ion-icon class="icon_ok"  item-right *ngIf="prijave.status == 4" name="md-checkmark-circle-outline" color="zelena"></ion-icon>
+
+          <h1>Hitnost: {{prijave.hitnost.toUpperCase()}}</h1>
+          <h4>Mjesto: {{prijave.mjesto}}</h4>
+          <p>Status: <span *ngIf="prijave.status == 1">Prijava pohranjena</span><span *ngIf="prijave.status == 2">Obavijest poslana komunalnom redaru</span><span *ngIf="prijave.status == 3">Komunalni redar zaprimio prijavu</span><span *ngIf="prijave.status == 4">Prijava obrađena</span></p>
+          <p>Datum prijave: {{prijave.datum_prijave}}</p>
+        </ion-item>
+
+        <img src="{{prijave.image_url}}"/>
+
+        <ion-card-content>
+          <p>Kontakt: {{prijave.kontakt}}</p>
+          <p>Opis: {{prijave.opis}}</p>
+
+          <p *ngIf="komunalni_redar">
+            <br>
+              <button class="span_komunalno_ikona" full *ngIf="prijave.status == 2" ion-button item-end icon-left color="crvena" (click)="azuriraj_status_komunalni_radnik(prijave.key)">
+                <ion-icon name="md-checkbox-outline"></ion-icon>Označi prijavu kao obrađenu
+              </button>
+              <button class="span_komunalno_ikona" full *ngIf="prijave.status == 4" ion-button item-end icon-left color="zelena">
+                <ion-icon name="md-checkbox-outline"></ion-icon>Prijava obrađena
+              </button>
+            <br>
+          </p>
+
+        </ion-card-content>
+
+      </ion-card>
+    </div>
+
+  </div>
+
+</ion-content>

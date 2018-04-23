@@ -1,18 +1,80 @@
 <ion-header>
   <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
+    <button ion-button menuToggle class="menu_button">
+      <ion-icon name="menu" color="bijela"></ion-icon>
     </button>
-    <ion-title>Home</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <h3>Ionic Menu Starter</h3>
 
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
-  </p>
+<ion-content class="main_content no_padding">
 
-  <button ion-button secondary menuToggle>Toggle Menu</button>
+  <ion-grid class="grid_danasnji_datum">
+    <ion-row class="no_padding">
+      <ion-col offset-5 col-6 class="no_padding vrijeme_col_danasnji_datum">
+
+        <div class="div_vrijeme_opis">{{vrijeme_opis}}</div>
+        <img *ngIf="vrijeme_data_ikona != ''" src="{{vrijeme_data_ikona}}" class="svg_vrijeme">
+
+        <div class="div_vrijeme_max"><ion-icon name="ios-arrow-round-up" style="font-size: 14px;"></ion-icon><span> {{vrijeme_temp_max}}&#176;</span></div>
+        <div class="div_vrijeme_min"><ion-icon pull-down name="ios-arrow-round-down" style="font-size: 14px;"></ion-icon><span> {{vrijeme_temp_min}}&#176;</span></div>
+
+        <div class="trenutno_vrijeme">{{vrijeme_temp | number: '1.0-0'}}&#176;</div>
+
+        </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-footer>
+
+    <div class="vremenska_prognoza_unaprijed">
+      <ion-slides *ngIf="prognoza && prognoza.length" pager="true">
+        <ion-slide *ngFor="let prognoza_segment of prognoza; let i = index">
+          <ion-grid >
+            <ion-row class="prognoza_col">
+              <ion-col col-2.4>
+                <img class="svg_prognoza" src="assets/icon/{{prognoza_segment[0].weather[0].icon}}.svg"><br>
+                {{prognoza_segment[0].weather[0].description}}<br>
+                {{prognoza_segment[0].main.temp | number: '1.1-1'}} &#8451;<br>
+                {{prognoza_segment[0].dan_txt }},
+                {{(prognoza_segment[0].dt_txt).substring(11, 16)}} h
+
+              </ion-col>
+              <ion-col col-2.4 class="border_left_right">
+                <img class="svg_prognoza" src="assets/icon/{{prognoza_segment[1].weather[0].icon}}.svg"><br>
+                {{prognoza_segment[1].weather[0].description}}<br>
+                {{prognoza_segment[1].main.temp | number: '1.1-1'}} &#8451;<br>
+                {{prognoza_segment[1].dan_txt }},
+                {{(prognoza_segment[1].dt_txt).substring(11, 16) }} h
+
+              </ion-col>
+              <ion-col col-2.4 class="border_left_right">
+                <img class="svg_prognoza" src="assets/icon/{{prognoza_segment[2].weather[0].icon}}.svg"><br>
+                {{prognoza_segment[2].weather[0].description}}<br>
+                {{prognoza_segment[2].main.temp | number: '1.1-1'}} &#8451;<br>
+                {{prognoza_segment[2].dan_txt}},
+                {{(prognoza_segment[2].dt_txt).substring(11, 16)}} h
+              </ion-col>
+              <ion-col col-2.4 class="border_left_right">
+                <img class="svg_prognoza" src="assets/icon/{{prognoza_segment[3].weather[0].icon}}.svg"><br>
+                {{prognoza_segment[3].weather[0].description}}<br>
+                {{prognoza_segment[3].main.temp | number: '1.1-1'}} &#8451;<br>
+                {{prognoza_segment[3].dan_txt}},
+                {{(prognoza_segment[3].dt_txt).substring(11, 16)}} h
+              </ion-col>
+              <ion-col col-2.4 class="border_left_right">
+                <img class="svg_prognoza" src="assets/icon/{{prognoza_segment[4].weather[0].icon}}.svg"><br>
+                {{prognoza_segment[4].weather[0].description}}<br>
+                {{prognoza_segment[4].main.temp | number: '1.1-1'}} &#8451;<br>
+                {{prognoza_segment[4].dan_txt}},
+                {{(prognoza_segment[4].dt_txt).substring(11, 16)}} h
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-slide>
+      </ion-slides>
+    </div>
+
+</ion-footer>
+
 </ion-content>

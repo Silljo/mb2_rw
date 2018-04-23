@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle >
+      <ion-icon name="menu" color="crna"></ion-icon>
+    </button>
+    <ion-title>Posebnosti
+      <span class="navbar_small_subtitle" style="color: #000">PREGLED SVIH POSEBNOSTI</span>
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content class="card-background-page">
+
+  <ion-card *ngFor="let atrakcija of atrakcije | async" (click)="detalji_atrakcije(atrakcija.id)">
+    <img class="atrakcije_img" src="{{atrakcija.slika_main}}">
+    <div class="card-title">{{atrakcija.naziv}}</div>
+  </ion-card>
+
+</ion-content>

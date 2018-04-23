@@ -1,0 +1,137 @@
+<ion-content class="no_padding content">
+
+  <!-- [style.background-image]="'url(' + slika + ')'" -->
+  <ion-icon class="icon_back" name="ios-arrow-back" (click) = "close_pop();"></ion-icon>
+
+  <div class="wraper_div_main" *ngIf="slika" [style.background-image]="'url(' + slika + ')'">
+
+    <div class="inner_div">
+
+      <div class="galerija_img_div" (click)="open_galerija(id, tip)">
+        <img class="galerija_image" src ="{{galerija_img}}">
+        <div class="galerija_div"><ion-icon class="galerija_icon" name="md-images"></ion-icon></div>
+      </div>
+      <span class="smjestaj_naziv">{{naziv_objekta}}</span>
+      <span class="adresa">{{adresa}}</span>
+    </div>
+  </div>
+
+  <ion-grid class="grid_ponuda">
+   <ion-row >
+     <ion-col col-12>
+       <div class="main_icons_div">
+         <div class="inner_icons_div" *ngFor="let ponuda of ponuda_ikone">
+           <ion-icon class="ponuda_ikone" name="{{ponuda}}"></ion-icon>
+         </div>
+       </div>
+     </ion-col>
+   </ion-row>
+  </ion-grid>
+
+  <!-- Ako nema zvjezdica ne prikazujemo -->
+  <ion-grid *ngIf="zvjezdica" class="grid_ponuda zvijezdice">
+    <ion-row >
+      <ion-col col-12 class="zvijezdice">
+        <span *ngIf="zvjezdica == 1"><ion-icon name="star"></ion-icon></span>
+        <span *ngIf="zvjezdica == 2"><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon></span>
+        <span *ngIf="zvjezdica == 3"><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon></span>
+        <span *ngIf="zvjezdica == 4"><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon></span>
+        <span *ngIf="zvjezdica == 5"><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon></span>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <br>
+  <ion-list>
+    <ion-item-sliding>
+      <ion-item no-lines>
+        <ion-avatar item-start>
+          <ion-icon class="icon_list" name="md-chatboxes"></ion-icon>
+        </ion-avatar>
+        <h2>Kontakt podaci</h2>
+        <h3>Telefon, mobitel, e-mail adresa...</h3>
+        <ion-avatar item-end>
+          <ion-icon class="pull" name="ios-arrow-back"> povuci za detalje</ion-icon>
+        </ion-avatar>
+      </ion-item>
+      <ion-item-options side="right">
+        <a class="kontakt_link" *ngIf="kontakt_telefon != ''" href="tel:{{kontakt_telefon}}" ion-button color="crvena">
+          <ion-icon name="md-call"></ion-icon>
+          Tel
+        </a>
+        <a class="kontakt_link" *ngIf="kontakt_mobitel != ''" href="tel:{{kontakt_mobitel}}" ion-button color="crna">
+          <ion-icon name="ios-phone-portrait"></ion-icon>
+          Mob
+        </a>
+        <a class="kontakt_link" *ngIf="kontakt_email != ''" href="mailto:{{kontakt_email}}" ion-button color="zelena">
+          <ion-icon name="mail"></ion-icon>
+          E-mail
+        </a>
+      </ion-item-options>
+    </ion-item-sliding>
+    <ion-item no-lines>
+      <ion-avatar item-start>
+        <ion-icon class="icon_list" name="md-time"></ion-icon>
+      </ion-avatar>
+      <h2>Radno vrijeme</h2>
+      <h3>Dani: {{radno_vrijeme_dani}}</h3>
+      <p>Sati: {{radno_vrijeme_sati}} h</p>
+    </ion-item>
+    <ion-item no-lines (click)="nav()">
+      <ion-avatar item-start>
+        <ion-icon class="icon_list" name="md-locate"></ion-icon>
+      </ion-avatar>
+        <h2>Adresa</h2>
+        <h3>{{adresa}}</h3>
+        <p>Za pokretanje navigacije pritisni ovdje</p>
+
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+
+  </ion-list>
+
+  <ion-card>
+    <ion-card-header><ion-icon class="info_icon" name="ios-information-circle"></ion-icon> Osnovne informacije </ion-card-header>
+    <ion-card-content>{{opis}}<br><br></ion-card-content>
+  </ion-card>
+
+  <ion-card *ngIf="rezervacije">
+    <ion-card-header class="card_recenzija"><ion-icon class="rezerviranje_icon" color="crvena" name="md-briefcase"></ion-icon> Rezervirani termini </ion-card-header>
+    <ion-list>
+      <ion-item text-wrap *ngFor="let rezervacija of rezervacije">
+          <ion-icon item-left class="ikona_rezervacija" md="md-calendar"></ion-icon>
+        <h4>{{rezervacija}}</h4>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+
+  <!-- Ako imamo flag recenzije_show TRUE onda se prikazuju recenzije -->
+  <ion-card *ngIf="recenzije_show">
+    <ion-card-header class="card_recenzija"><ion-icon class="info_icon" name="ios-bookmarks"></ion-icon> Recenzije korisnika </ion-card-header>
+
+    <ion-list *ngIf="recenzije_db">
+      <ion-item text-wrap *ngFor="let key of keys">
+        <ion-avatar item-start>
+        <img src="{{galerija_img}}">
+        </ion-avatar>
+        <h2>{{recenzije_db[key].korisnik_ime_prezime}}</h2>
+        <p>{{recenzije_db[key].recenzija}}</p>
+      </ion-item>
+    </ion-list>
+    <br>
+    <form (ngSubmit)="recenzija_save()">
+    <ion-item class="item_recenzija" no-lines>
+      <ion-label>Napiši recenziju: </ion-label>
+      <ion-textarea [(ngModel)]="recenzija" [ngModelOptions]="{standalone: true}"></ion-textarea>
+
+      <button ion-button icon-only item-right color="narandjasta" type="submit">
+        <ion-icon name="md-send" color="bijela" style="padding: 1rem;"></ion-icon>
+      </button>
+    </ion-item>
+  </form>
+
+    <ion-card-content></ion-card-content>
+  </ion-card>
+
+</ion-content>

@@ -1,0 +1,36 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Registracija</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="login_content">
+
+  <fieldset class="login_forma">
+
+    <legend class="legend_login"></legend>
+      <br><br>
+      <ion-item no-lines>
+        <ion-label class="labels"><ion-icon color="zelena" name="md-mail"></ion-icon></ion-label>
+        <ion-input class="input_login" type="email" text-left placeholder="E-mail adresa" [(ngModel)]="user.email"></ion-input>
+      </ion-item>
+      <br>
+      <ion-item no-lines>
+        <ion-label class="labels"><ion-icon color="zelena" name="md-lock"></ion-icon></ion-label>
+        <ion-input class="input_login" text-left type="password" placeholder="Lozinka" [(ngModel)]="user.password"></ion-input>
+      </ion-item>
+      <br>
+      <ion-item no-lines>
+        <ion-label class="labels"><ion-icon color="zelena" name="md-lock"></ion-icon></ion-label>
+        <ion-input class="input_login" text-left type="password" placeholder="Ponovi lozinku" [(ngModel)]="password2"></ion-input>
+      </ion-item>
+      <div class="login_button_wraper">
+        <button class="button_forma" ion-button round block color="zelena" (click)="register(user)">Registriraj se i prijavi</button>
+      </div>
+      <br>
+  </fieldset>
+
+</ion-content>

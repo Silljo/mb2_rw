@@ -1,0 +1,90 @@
+page-login, page-reset-password, page-register{
+
+  .login_content
+  {
+    background-image: url('../assets/imgs/bistrica_login.png');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .item
+  {
+    font-size: 1.4rem;
+    padding: 0.2rem 0.2rem 0.2rem 1rem;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 1rem;
+    color: #FFF;
+  }
+
+  .login_forma
+  {
+    margin-top: 20%;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 2rem;
+    border: 1px solid rgba(39, 119, 60, 0.5);
+  }
+
+  .login_button_wraper
+  {
+    margin-top: 2rem;
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+
+  .item-inner, ion-item {
+    border-bottom-color: transparent !important;
+    box-shadow: none !important;
+  }
+
+  .footer_login
+  {
+    color: #CCC;
+    text-align: center;
+    padding: 2rem;
+    margin-top: 3rem;
+    width: 100%;
+    font-size: 1.2rem;
+  }
+
+  .span_ovdje
+  {
+    color: #27793D;
+  }
+
+  hr {
+
+    height: 0.1rem !important;
+    width: 100px;
+    background: grey !important;
+    display: block !important;
+    font-size: 2em !important;
+  }
+
+  .button_forma
+  {
+      font-size: 1.2rem;
+  }
+
+  .legend_login
+  {
+    width: 12rem;
+    height: 12rem;
+    background-color: rgba(39, 119, 60, 1);
+    border-radius: 100rem;
+    background-image: url('../assets/imgs/logo_turisticka.png');
+    background-size: contain;
+    background-position: center left;
+    background-repeat: no-repeat;
+    text-align: center;
+
+  }
+
+  .logo_div_login
+  {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

@@ -1,0 +1,24 @@
+page-register {
+
+  ion-header {
+  .toolbar {
+    z-index: 99999;
+    position: absolute;
+
+      .toolbar-background {
+        background: transparent;
+
+      }
+      .toolbar-title {
+        color: #FFF;
+      }
+    }
+  }
+
+  .bar-button-default
+  {
+    color: #FFF;
+    background-color: transparent;
+  }
+
+}

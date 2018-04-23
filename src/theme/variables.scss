@@ -35,16 +35,44 @@ $app-direction: ltr;
 
 $colors: (
   primary:    #488aff,
-  secondary:  #32db64,
+  secondary:  #ED1B2F,
   danger:     #f53d3d,
   light:      #f4f4f4,
-  dark:       #222
+  dark:       #222,
+  crvena: #ED1B2F,
+  zelena: #27793D,
+  crna: #000,
+  narandjasta: #F7A54B,
+  roza: #F05C6A,
+  bijela: #FFF,
+  plava: #0288D1,
+  siva: #AAA,
+  facebook_plava: #3B5998,
+  smedja: #A26B34,
+  siva_interaktivna: #f5f5f5
 );
+
+$crvena: #ED1B2F;
+$bijela: #FFF;
+$roza_boja: #F05C6A;
+$zelena_boja: #27793D;
+$narandjasta_boja: #F7A54B;
+$siva_boja: #AAA;
+$crna_boja: #000;
+$plava_boja: #0288D1;
 
 
 // App iOS Variables
 // --------------------------------------------------
 // iOS only Sass variables can go here
+$loading-ios-background: rgba(0, 0, 0, 0.5);
+$loading-ios-spinner-color: $bijela;
+$loading-ios-text-color: $bijela;
+
+$alert-ios-background-color: rgba(0, 0, 0, 0.7);
+$alert-ios-message-text-color: $bijela;
+$alert-ios-button-text-color: $zelena_boja;
+$alert-ios-title-text-color: $crvena;
 
 
 
@@ -52,7 +80,26 @@ $colors: (
 // App Material Design Variables
 // --------------------------------------------------
 // Material Design only Sass variables can go here
+$segment-button-md-line-height: 3rem;
+$segment-button-md-border-bottom-color: rgba(240, 92, 106, 0.2) !important;
+$segment-button-md-border-color-activated: rgba(240, 92, 106, 1) !important;
 
+$text-input-placeholder-color: #ccc;
+
+$spinner-md-crescent-color: $plava_boja;
+
+$loading-md-background: rgba(0, 0, 0, 0.5);
+$loading-md-spinner-color: $bijela;
+$loading-md-text-color: $bijela;
+
+$alert-md-background-color: rgba(0, 0, 0, 0.7);
+$alert-md-message-text-color: $bijela;
+$alert-md-button-text-color: $zelena_boja;
+$alert-md-title-text-color: $crvena;
+
+.alert-title {
+    color: $crvena;
+}
 
 
 

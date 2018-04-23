@@ -1,0 +1,68 @@
+page-komunalno {
+
+  .segment-button.activated, .segment-md .segment-button.segment-activated {
+    border-color: $plava_boja !important;
+
+  }
+
+  .segment-ios-plava .segment-button.segment-activated {
+    .icon-ios-plava {
+      color: #FFF;
+    }
+  }
+
+
+  .navbar_small_subtitle{
+    position: inherit;
+
+  }
+
+
+  .segment-md .segment-button {
+    border-bottom-color: rgba(39, 121, 61, 0.2) !important;
+  }
+
+  .radio_header
+  {
+    color: #999;
+    font-size: 1.6rem;
+    padding-bottom: 5px;
+  }
+
+  .platform-ios .radio_header{
+
+  }
+
+  .list-header-md {
+    border-top: 0px solid #dedede;
+  }
+
+  .margine_prevelike
+  {
+    margin-top: -20px;
+  }
+
+  .segment_class
+  {
+    padding: 15px 5px 0px 5px;
+  }
+
+  .span_komunalno_ikona
+  {
+    width: 100;
+  }
+
+  .icon_ok
+  {
+    font-size: 3rem;
+  }
+
+  .kumunalno_polja_obavezna
+  {
+    color: $plava_boja;
+    font-size: 0.5rem;
+    text-align: center;
+
+  }
+
+}

@@ -1,0 +1,43 @@
+<ion-header>
+
+  <ion-navbar color="crna">
+    <button ion-button menuToggle >
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Duhovni kutak
+      <span class="navbar_small_subtitle">PREGLED MISA, HODOČAŠĆA I OSTALIH DUHOVNIH ZBIVANJA</span>
+    </ion-title>
+
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <timeline endIcon="">
+    <timeline-item *ngFor="let duhovni_kutak of duhovni_kutak_data | async">
+      <timeline-time [title]="[duhovni_kutak.datum, duhovni_kutak.vrijeme]"></timeline-time>
+      <ion-icon class="ion-icon_class" [name]="'calendar'"></ion-icon>
+
+      <ion-card>
+
+        <ion-item>
+          <ion-avatar item-start>
+            <img src="{{duhovni_kutak.slika_avatar}}">
+          </ion-avatar>
+          <h2>{{duhovni_kutak.naziv}}</h2>
+          <p>{{duhovni_kutak.lokacija}}</p>
+          <ion-icon name="notifications" color="crna" item-right (click)="add_notification_reminder(duhovni_kutak.datum, duhovni_kutak.vrijeme, duhovni_kutak.naziv, duhovni_kutak.lokacija, duhovni_kutak.slika_avatar)"></ion-icon>
+        </ion-item>
+
+        <div *ngIf="duhovni_kutak.slika_main"><img src="{{duhovni_kutak.slika_main}}"></div>
+
+        <ion-card-content>
+          {{duhovni_kutak.opis}}
+        </ion-card-content>
+      </ion-card>
+    </timeline-item>
+  </timeline>
+
+</ion-content>

@@ -1,0 +1,14 @@
+<ion-content class="content">
+
+  <ion-icon (click)="close_galery()" name="close-circle" color="siva" class="close_button"></ion-icon>
+
+  <ion-icon class="ikona" name="images"></ion-icon>
+
+  <ion-slides *ngIf="slike && slike.length" pager="true">
+  <ion-slide *ngFor="let slika of slike">
+    <img class="slika" src="{{slika}}">
+
+  </ion-slide>
+</ion-slides>
+
+</ion-content>

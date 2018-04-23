@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-navbar color="roza">
+    <button ion-button menuToggle >
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Gastro
+      <span class="navbar_small_subtitle">PONUDA HRANE, JELA I PIĆA</span>
+    </ion-title>
+
+
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="gastro_content">
+
+  <ion-segment class="segment_class" [(ngModel)]="gastro" color="secondary">
+    <ion-segment-button value="hrana">
+      <ion-icon name="md-restaurant" color="roza"></ion-icon>
+    </ion-segment-button>
+    <ion-segment-button value="pice">
+      <ion-icon name="md-wine" color="roza"></ion-icon>
+    </ion-segment-button>
+  </ion-segment>
+
+  <div [ngSwitch]="gastro">
+
+    <ion-grid *ngSwitchCase="'hrana'">
+     <ion-row class="main_row" *ngFor="let hrana of gastro_hrana | async">
+       <div class="wraper_div_main" [style.background-image]="'url(' + hrana.slika + ')'" (click)="gastro_detalji('hrana', hrana.id)">
+         <div class="inner_div">
+           <span class="span_ikona_open"><ion-icon name="ios-arrow-forward"></ion-icon></span>
+           <span class="span_naziv_obj">{{hrana.naziv_objekta}}</span><br>
+           <span class="span_tip">{{hrana.tip}}</span><br>
+           <span class="span_ponuda">Ponuda: {{hrana.ponuda}}</span>
+         </div>
+       </div>
+     </ion-row>
+  </ion-grid>
+
+  <ion-grid *ngSwitchCase="'pice'">
+   <ion-row class="main_row" *ngFor="let pice of gastro_pice | async">
+     <div class="wraper_div_main" [style.background-image]="'url(' + pice.slika + ')'" (click)="gastro_detalji('pice',pice.id)">
+       <div class="inner_div">
+         <span class="span_ikona_open"><ion-icon name="ios-arrow-forward"></ion-icon></span>
+         <span class="span_naziv_obj">{{pice.naziv_objekta}}</span><br>
+         <span class="span_tip">{{pice.tip}}</span><br>
+         <span class="span_ponuda">Ponuda: {{pice.ponuda}}</span>
+       </div>
+     </div>
+   </ion-row>
+  </ion-grid>
+
+</div>
+
+</ion-content>

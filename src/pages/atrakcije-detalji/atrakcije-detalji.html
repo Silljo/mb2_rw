@@ -1,0 +1,39 @@
+<ion-content class="no_padding content">
+
+  <!-- [style.background-image]="'url(' + slika + ')'" -->
+  <ion-icon class="icon_back" name="ios-arrow-back" (click) = "close_pop();"></ion-icon>
+
+  <div class="wraper_div_main"  *ngIf="atrakcija_slika_main" [style.background-image]="'url(' + atrakcija_slika_main + ')'">
+
+    <div class="inner_div">
+
+      <div class="galerija_img_div" (click)="open_galerija(id, 'atrakcije')">
+        <img class="galerija_image" src ="{{atrakcija_slika_galerija}}">
+        <div class="galerija_div"><ion-icon class="galerija_icon" name="md-images"></ion-icon></div>
+      </div>
+      <span class="smjestaj_naziv">{{atrakcija_naziv}}</span>
+      <span class="adresa">{{atrakcija_opis_short}}</span>
+    </div>
+  </div>
+
+  <ion-grid class="grid_ponuda">
+   <ion-row >
+     <ion-col col-12>
+       <div class="main_icons_div">
+       </div>
+     </ion-col>
+   </ion-row>
+  </ion-grid>
+
+  <br>
+
+  <ion-list>
+
+  </ion-list>
+
+  <ion-card>
+    <ion-card-header><ion-icon class="info_icon" name="ios-information-circle"></ion-icon> Osnovne informacije </ion-card-header>
+    <ion-card-content>{{atrakcija_opis}}<br></ion-card-content>
+  </ion-card>
+
+</ion-content>

@@ -1,0 +1,62 @@
+{
+  "project_info": {
+    "project_number": "883164805583",
+    "firebase_url": "https://mbistrica-c5bd3.firebaseio.com",
+    "project_id": "mbistrica-c5bd3",
+    "storage_bucket": "mbistrica-c5bd3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:883164805583:android:17e76bccc2778ea1",
+        "android_client_info": {
+          "package_name": "com.mbistrica.mb"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "883164805583-26qsij3u7f2p3im24ln12vqirdiefpru.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mbistrica.mb",
+            "certificate_hash": "d0b02315d59a57d23e22c08ae0e5ed5e34650384"
+          }
+        },
+        {
+          "client_id": "883164805583-o1u890mu57p51rmf16d4nimsh1rhotd6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCEM21dlLfmwtl6auE_ekPk2Ky80JW1SPg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "883164805583-o1u890mu57p51rmf16d4nimsh1rhotd6.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "883164805583-s8clisnkjpbeolgslssq1nog0ku403vh.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mbistrica.mb"
+              }
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

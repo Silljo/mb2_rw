@@ -1,19 +1,46 @@
-<ion-menu [content]="content">
+<ion-menu [content]="content" bar-clear>
   <ion-header>
-    <ion-toolbar>
-      <ion-title>Menu</ion-title>
-    </ion-toolbar>
   </ion-header>
 
   <ion-content>
-    <ion-list>
-      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
-        {{p.title}}
-      </button>
-    </ion-list>
+
+      <div class="div_user_photo_izbornik" (click)="user_postavke()" menuClose>
+        <div class="profile_picture" [style.background-image]="'url(' + user_img + ')'"></div>
+        <br><br>
+        <span class="username_icon">{{username}}</span><br>
+        <span class="email_icon"><i>{{email}}</i></span>
+      </div>
+
+      <ion-list class="menu_list item-borderless" no-lines>
+
+        <button class="menu_button_nav" menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+          <div class="main_wraper_div_menu">
+              <ion-icon class="menu_icon_div" color="{{p.icon_color}}" name="{{p.icon}}"><span class="menu_tekst">{{p.title}}</span></ion-icon>
+          </div>
+        </button>
+
+        <button class="menu_button_nav" menuClose ion-item (click)="openRadio()">
+          <div class="main_wraper_div_menu">
+              <ion-icon class="menu_icon_div" name="md-radio"><span class="menu_tekst">Radio</span></ion-icon>
+          </div>
+        </button>
+
+        <button class="menu_button_nav" menuClose ion-item (click)="user_postavke()">
+          <div class="main_wraper_div_menu">
+              <ion-icon class="menu_icon_div" color="smedja" name="md-settings"><span class="menu_tekst">Postavke</span></ion-icon>
+          </div>
+        </button>
+
+        <button class="menu_button_nav" menuClose ion-item (click)="logout()">
+          <div class="main_wraper_div_menu">
+              <ion-icon class="menu_icon_div" color="crna" name="md-exit"><span class="menu_tekst">Odjava</span></ion-icon>
+          </div>
+        </button>
+
+      </ion-list>
+
   </ion-content>
 
 </ion-menu>
 
-<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
 <ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

@@ -1,3 +1,108 @@
 page-home {
 
+  .toolbar-background {
+    border-color: transparent;
+    background: transparent;
+    color: #FFF;
+  }
+
+  .main_content
+  {
+    background-image: url('../assets/imgs/pozadina_min.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .vremenska_prognoza_unaprijed
+  {
+    margin-top: 100%;
+    color: #FFF;
+    background-color: rgba(0,0,0,0.4);
+  }
+
+  .prognoza_col
+  {
+    font-size: 0.6rem;
+    padding-bottom: 1rem;
+
+  }
+
+  .border_left_right
+  {
+    border-left: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .swiper-pagination-bullet-active {
+    background: #FFF !important;
+    opacity: 0.8 !important;
+  }
+
+  .swiper-pagination-bullet {
+    background: #EEE;
+    opacity: 0.2;
+  }
+
+  .swiper-pagination-fraction, .swiper-pagination-custom, .swiper-container-horizontal > .swiper-pagination-bullets {
+    left: 0 !important;
+    bottom: 0.1rem !important;
+    width: 100% !important;
+  }
+
+  .header::after, .tabs[tabsPlacement="top"] > .tabbar::after, .footer::before, .tabs[tabsPlacement="bottom"] > .tabbar::before {
+    background-image: none !important;
+  }
+
+  .menu_button
+  {
+    background-color: rgba(0,0,0,0.6) !important;
+  }
+
+  .grid_danasnji_datum
+  {
+    background-color: rgba(0,0,0,0.3);
+  }
+
+  .vrijeme_col_danasnji_datum
+  {
+    color: #FFF;
+    font-weight: 400;
+  }
+
+  .svg_prognoza
+  {
+    max-height: 4rem;
+  }
+
+  .svg_vrijeme
+  {
+    max-height: 4rem;
+    float: right;
+  }
+
+  .div_vrijeme_opis
+  {
+    float: right;
+    padding-top: 1.2rem;
+  }
+
+  .div_vrijeme_max
+  {
+    float: right;
+    clear: right;
+  }
+
+  .div_vrijeme_min
+  {
+    padding-right: 1rem;
+    float: right;
+  }
+
+  .trenutno_vrijeme
+  {
+    float: right;
+    clear: right;
+    font-size: 4em;
+  }
+
 }
