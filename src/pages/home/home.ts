@@ -22,6 +22,30 @@ export class HomePage {
 
   constructor(public db: AngularFireDatabase) {
 
+    var d = new Date();
+    var mjesec = d.getMonth() + 1;
+
+    if(mjesec > 3 && mjesec < 6)
+    {
+      //Proljece slika
+      this.slika_pozadina = 'proljece';
+    }
+    else if(mjesec >= 6 && mjesec < 9)
+    {
+      //Ljeto slika
+      this.slika_pozadina = 'ljeto';
+    }
+    else if(mjesec >= 9 && mjesec < 12)
+    {
+      //Jesen slika
+      this.slika_pozadina = 'jesen';
+    }
+    else
+    {
+      //Zima slika
+      this.slika_pozadina = 'zima';
+    }
+
     this.podaci_vrijeme = this.db.object('/weather/').valueChanges().subscribe((data_vrijeme) => {
 
       this.podaci_vrijeme_data = JSON.parse(data_vrijeme['current'].data);

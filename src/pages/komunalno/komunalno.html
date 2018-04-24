@@ -13,7 +13,7 @@
 </ion-header>
 
 
-<ion-content>
+<ion-content class="content_patern">
   <br>
   <ion-segment class="segment_class" [(ngModel)]="komunalno_segment" color="plava">
 
@@ -30,41 +30,41 @@
 
   <div *ngSwitchCase="'prijava'">
 
-  <form [formGroup]="komunalno" (ngSubmit)="logForm()">
+  <form [formGroup]="komunalno" (ngSubmit)="logForm()" class="form_transparent">
 
       <ion-list radio-group formControlName="hitnost" no-lines>
-        <ion-list-header class="radio_header">
+        <ion-list-header class="radio_header form_transparent">
           Hitnost:
         </ion-list-header>
 
-          <ion-item class="margine_prevelike">
+          <ion-item class="margine_prevelike form_transparent">
             <ion-label>Visoka</ion-label>
             <ion-radio value="visoka" color="plava"></ion-radio>
           </ion-item>
-          <ion-item>
+          <ion-item class="form_transparent">
             <ion-label>Srednja</ion-label>
             <ion-radio value="srednja" color="plava"></ion-radio>
           </ion-item>
-          <ion-item>
+          <ion-item class="form_transparent">
             <ion-label>Niska</ion-label>
             <ion-radio value="niska" color="plava"></ion-radio>
           </ion-item>
       </ion-list>
 
-      <ion-item class="margine_prevelike">
+      <ion-item class="margine_prevelike form_transparent">
         <ion-label>Mjesto</ion-label>
         <ion-input type="text" formControlName="mjesto"></ion-input>
       </ion-item>
-      <ion-item>
+      <ion-item class="form_transparent">
         <ion-label>Opis</ion-label>
         <ion-textarea formControlName="opis"></ion-textarea>
       </ion-item>
-      <ion-item>
+      <ion-item class="form_transparent">
         <ion-label>Kontakt (mob/tel)</ion-label>
         <ion-input type="number" formControlName="kontakt"></ion-input>
       </ion-item>
       <ion-item no-lines>
-        <ion-card>
+        <ion-card class="form_transparent">
           <ion-card-header style="text-align:center;" (click)="slika_komunalno()">
             <ion-icon name="camera" color="plava"></ion-icon>
           </ion-card-header>
@@ -75,10 +75,10 @@
       <ion-input type="hidden" formControlName="slika" value="{{this.slika_validation}}"></ion-input>
 
       <ion-grid>
-        <ion-row>
-          <ion-col offset-3 col-6>
+        <ion-row class="form_transparent">
+          <ion-col offset-3 col-6 class="form_transparent">
             <button ion-button round full type="submit" color="plava" [disabled]="!komunalno.valid">Pošalji</button>
-            <div *ngIf="!komunalno.valid" class="kumunalno_polja_obavezna">(prije slanja popunite sva polja)</div>
+            <div *ngIf="!komunalno.valid" class="kumunalno_polja_obavezna">(prije slanja popunite sva polja i priložite sliku)</div>
           </ion-col>
         </ion-row>
       </ion-grid>

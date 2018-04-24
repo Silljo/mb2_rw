@@ -15,6 +15,7 @@ import { Firebase } from '@ionic-native/firebase';
 import { ToastController } from 'ionic-angular';
 
 import * as firebase from 'firebase';
+import { AuthProvider } from '../providers/auth/auth';
 
 
 export class NotificationModel {
@@ -40,7 +41,7 @@ export class MyApp {
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, private streamingMedia: StreamingMedia,
               private afAuth: AngularFireAuth, public events: Events,
               public conn: ConnectivityServiceProvider, private db: AngularFireDatabase, public firebase_plugin: Firebase, public menu: MenuController,
-              public toast: ToastController) {
+              public toast: ToastController, public auth_provider: AuthProvider) {
 
     this.initializeApp();
 
@@ -77,6 +78,9 @@ export class MyApp {
           });
     });
 
+    //Clearamo badge
+    this.firebase_plugin.setBadgeNumber(0);
+
     //Ajmo pohraniti sve vezano za korisnika sta bi nam trebalo u nekom trenutku
     this.afAuth.authState.subscribe(data => {
 
@@ -93,30 +97,9 @@ export class MyApp {
             {
                 this.firebase_plugin.grantPermission();
             }
-
-            /*
-            //Kad smo sigurni da je sve u bazi onda i updejtamo token men
-            this.firebase_plugin.onTokenRefresh().subscribe(token_firebase => {
-
-              firebase.database().ref('/user_profiles/' + data.uid).update({
-                  token: token_firebase
-                });
-
-            });*/
-
           }
 
         });
-
-        //Kad smo sigurni da je sve u bazi onda i updejtamo token men
-        this.firebase_plugin.onTokenRefresh().subscribe(token_firebase => {
-
-          firebase.database().ref('/user_profiles/' + data.uid).update({
-              token: token_firebase
-            });
-
-        });
-
 
         if(!this.redirekcija)
         {
@@ -227,16 +210,10 @@ export class MyApp {
 
   logout()
   {
-    //Ako smo tu onda brisemo korisnikov token
-    this.afAuth.authState.subscribe(data => {
-      //User id i to i token stavljamo na prazno
-      if (data && data.uid)
-      {
-        firebase.database().ref('/user_profiles/' + data.uid).update({
-            logout: true
-          });
-      }
-    });
+    
+    this.auth_provider.logout_true();
+    this.firebase_plugin.unregister();
+    this.afAuth.auth.signOut();
 
     firebase.auth().signOut().then(function() {
       //Ako se odlogira moramo maknuti korisnikov token

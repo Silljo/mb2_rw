@@ -52,7 +52,8 @@ export class DogadjanjaPage {
       id: godina + mjesec + dan + sati + minute,
       title: naziv,
       text: lokacija + ' (' + vrijeme + ' sati)',
-      //at: new Date(godina, mjesec-1, dan, sati, minute, -3600),
+      trigger: {at: new Date(godina, mjesec-1, dan, sati, minute, -3600)},
+      data: { modul: 'dogadjanja' },
       icon: icon
     });
   }

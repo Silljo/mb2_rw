@@ -24,6 +24,7 @@ export class AuthProvider {
 
   async obrada_uspjesnog_logina(uid, email, photo, naziv)
   {
+
     //Ovdje piknemo da vidimo da li postoji u bazi
     var ref_profle = firebase.database().ref("/user_profiles/");
 
@@ -35,7 +36,7 @@ export class AuthProvider {
         if(naziv == null){naziv = email.split("@")[0];}
         if(photo == null || photo == ''){photo = 'https://firebasestorage.googleapis.com/v0/b/mbistrica-c5bd3.appspot.com/o/mblogo.png?alt=media&token=32a7650c-7a01-4b51-965a-7e6c17e7fcb9';}
 
-        firebase.database().ref('/user_profiles/' + uid).set({
+        firebase.database().ref('/user_profiles/' + uid).update({
             uid: uid,
             email: email,
             slika: photo,
@@ -62,9 +63,29 @@ export class AuthProvider {
       }
       else
       {
+
+        if(naziv == null){naziv = email.split("@")[0];}
+        if(photo == null || photo == ''){photo = 'https://firebasestorage.googleapis.com/v0/b/mbistrica-c5bd3.appspot.com/o/mblogo.png?alt=media&token=32a7650c-7a01-4b51-965a-7e6c17e7fcb9';}
+
         firebase.database().ref('/user_profiles/' + uid).update({
+            uid: uid,
+            email: email,
+            slika: photo,
+            display_name: naziv,
             logout: false
-          });
+        });
+
+        var user = firebase.auth().currentUser;
+
+        user.updateProfile({
+          displayName: naziv,
+          photoURL: photo
+        }).then(function() {
+          // Update successful.
+        }).catch(function(error) {
+          // An error happened.
+        });
+
       }
     });
 
@@ -119,6 +140,33 @@ export class AuthProvider {
   async register(user_email, user_password)
   {
     return await this.afAuth.auth.createUserWithEmailAndPassword(user_email, user_password);
+  }
+
+  token_update()
+  {
+
+    var userId = firebase.auth().currentUser.uid;
+
+    this.firebase_plugin.getToken()
+    .then(token_firebase =>{
+      firebase.database().ref('/user_profiles/' + userId).update({
+          token: token_firebase
+        });
+    })
+    .catch(error => console.error('Error getting token', error));
+
+  }
+
+  logout_true()
+  {
+
+    var userId = firebase.auth().currentUser.uid;
+
+    firebase.database().ref('/user_profiles/' + userId).update({
+        logout: true,
+        token: ''
+      });
+
   }
 
 

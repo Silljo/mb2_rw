@@ -35,7 +35,11 @@ export class LoginPage {
       res => {
         //Dobili smo nešto natrag, i bilo je uspješno
         this.auth.obrada_uspjesnog_logina(res.uid, res.email, res.photoURL, res.displayName).then(
-          (finish) => {this.navCtrl.setRoot(HomePage); loading.dismiss();},
+          (finish) => {
+            this.auth.token_update();
+            this.navCtrl.setRoot(HomePage);
+            loading.dismiss();
+          },
           (error) => {this.auth.obrada_neuspjesnog_logina(error); loading.dismiss();}
         );
         //
@@ -78,6 +82,7 @@ export class LoginPage {
                     this.navCtrl.setRoot(HomePage);
                     //Subscribamo ili ne ?
                     this.auth.subscribe_topics();
+                    this.auth.token_update();
                   }),
                 (error =>   {loading.dismiss(); this.auth.obrada_neuspjesnog_logina(error);})
               );

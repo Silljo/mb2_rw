@@ -10,7 +10,7 @@
 </ion-header>
 
 
-<ion-content class="card-background-page">
+<ion-content class="card-background-page content_patern">
 
   <ion-card *ngFor="let atrakcija of atrakcije | async" (click)="detalji_atrakcije(atrakcija.id)">
     <img class="atrakcije_img" src="{{atrakcija.slika_main}}">

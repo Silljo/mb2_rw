@@ -87,6 +87,7 @@ export class UserPostavkePage {
 
              firebase.database().ref('user_profiles/' + data.uid).update({
                  slika: snapshot.downloadURL,
+                 slika_custsom: true
                });
 
            });
