@@ -22,6 +22,7 @@ export class NotificationModel {
     public body: string;
     public title: string;
     public tap: boolean
+    public aps: any;
 }
 
 @Component({
@@ -112,9 +113,20 @@ export class MyApp {
 
                   if(!notification.tap)
                   {
+                    if(this.platform.is('android'))
+                    {
+                      var notification_body = notification.body;
+                    }
+
+                    if(this.platform.is('ios'))
+                    {
+                      var notification_body:string = notification.aps.alert;
+                    }
+
+
                     //Kad je aplikacija otvorena dati ćemo korisniku samo alert neki ili toast ovisi kaj će ljepse izgledati
                     let toast = this.toast.create({
-                      message: notification.body,
+                      message: notification_body,
                       position: 'top',
                       showCloseButton: true,
                       closeButtonText: 'OK'
@@ -210,7 +222,7 @@ export class MyApp {
 
   logout()
   {
-    
+
     this.auth_provider.logout_true();
     this.firebase_plugin.unregister();
     this.afAuth.auth.signOut();
