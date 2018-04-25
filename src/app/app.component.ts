@@ -210,7 +210,7 @@ export class MyApp {
 
   logout()
   {
-    
+
     this.auth_provider.logout_true();
     this.firebase_plugin.unregister();
     this.afAuth.auth.signOut();
