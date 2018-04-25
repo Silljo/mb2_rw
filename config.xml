@@ -95,6 +95,15 @@
     <plugin name="cordova-plugin-network-information" spec="^2.0.1" />
     <plugin name="cordova-plugin-local-notification" spec="^0.9.0-beta.2" />
     <plugin name="cordova.plugins.diagnostic" spec="^4.0.5" />
+    <platform name="ios">
+        <plugin name="cordova-custom-config" version="*" />
+        <custom-config-file parent="NSLocationAlwaysUsageDescription" platform="ios" target="*-Info.plist">
+            <string>My custom message for always using location.</string>
+        </custom-config-file>
+        <custom-config-file parent="NSLocationWhenInUseUsageDescription" platform="ios" target="*-Info.plist">
+            <string>My custom message for using location when in use.</string>
+        </custom-config-file>
+    </platform>
     <plugin name="cordova-plugin-googlemaps" spec="^2.2.9">
         <variable name="API_KEY_FOR_ANDROID" value="AIzaSyAQl2ZWgXTMydXdtRZuGMdjyw07pKv02Vc" />
         <variable name="API_KEY_FOR_IOS" value="AIzaSyA94aPEJXN0iof_xYzqPlMbewvsEbZNdxw" />
