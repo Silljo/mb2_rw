@@ -92,7 +92,7 @@ export class LoginPage {
               this.auth.obrada_neuspjesnog_logina(error);
           });
 
-      }).catch((error) => { loading.dismiss(); alert(error); this.auth.obrada_neuspjesnog_logina(error); });
+      }).catch((error) => { loading.dismiss(); this.auth.obrada_neuspjesnog_logina(error); });
 
   }
 

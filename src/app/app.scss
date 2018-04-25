@@ -161,6 +161,14 @@ ion-menu{
   margin-top: 0.5em;
 }
 
+.ios
+{
+  .ios_margine
+  {
+    margin-top: -20px;
+  }
+}
+
 page-atrakcije-detalji, page-gastro-detalji, page-smjestaj-detalji{
 
   .icon_back
@@ -179,6 +187,7 @@ page-atrakcije-detalji, page-gastro-detalji, page-smjestaj-detalji{
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+
   }
 
   .inner_div

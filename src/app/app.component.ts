@@ -17,7 +17,6 @@ import { ToastController } from 'ionic-angular';
 import * as firebase from 'firebase';
 import { AuthProvider } from '../providers/auth/auth';
 
-
 export class NotificationModel {
     public body: string;
     public title: string;
@@ -94,10 +93,6 @@ export class MyApp {
             this.user_img = data_user['slika'];
             this.email = data_user['email'];
 
-            if(this.platform.is('ios'))
-            {
-                this.firebase_plugin.grantPermission();
-            }
           }
 
         });
@@ -120,9 +115,16 @@ export class MyApp {
 
                     if(this.platform.is('ios'))
                     {
-                      var notification_body:string = notification.aps.alert;
+                      if(notification.aps.alert.body)
+                      {
+                        var notification_body:string = notification.aps.alert.body;
+                      }
+                      else
+                      {
+                        var notification_body:string = notification.aps.alert;
+                      }
+                      
                     }
-
 
                     //Kad je aplikacija otvorena dati ćemo korisniku samo alert neki ili toast ovisi kaj će ljepse izgledati
                     let toast = this.toast.create({
@@ -231,7 +233,7 @@ export class MyApp {
       //Ako se odlogira moramo maknuti korisnikov token
 
     }, function(error) {
-      alert(error)
+
     });
   }
 

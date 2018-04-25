@@ -7,10 +7,7 @@ import { HomePage } from '../home/home';
 import {
  GoogleMaps,
  GoogleMap,
- GoogleMapsEvent,
- LatLng,
- MarkerOptions,
- Marker
+ GoogleMapsEvent
 } from '@ionic-native/google-maps';
 
 @IonicPage()
@@ -53,41 +50,6 @@ export class InteraktivnaMapaPage {
 
   constructor(public navCtrl: NavController, private googleMaps: GoogleMaps, public db: AngularFireDatabase, public loadingCtrl: LoadingController,public events: Events,
               private diagnostic: Diagnostic, private alertCtrl: AlertController, public plt: Platform) {
-
-                /*
-    db.object("/interaktivna_mapa/").valueChanges().subscribe((data_opcenito) => {
-      this.interaktivna_mapa_opcenito = data_opcenito;
-    });
-
-
-    db.object("/smjestaj_detalji/").valueChanges().subscribe((data_smjestaj_detalji) => {
-      this.interaktivna_mapa_smjestaj = data_smjestaj_detalji;
-    });
-
-    db.object("/dogadjanja_sport/").valueChanges().subscribe((data_dogadjanja_sport) => {
-      this.interaktivna_mapa_dogadjanja_sport = data_dogadjanja_sport;
-    });
-
-    db.object("/dogadjanja_zabava/").valueChanges().subscribe((data_dogadjanja_zabava) => {
-      this.interaktivna_mapa_dogadjanja_zabava = data_dogadjanja_zabava;
-    });
-
-    db.object("/dogadjanja_kultura/").valueChanges().subscribe((data_dogadjanja_kultura) => {
-      this.interaktivna_mapa_dogadjanja_kultura = data_dogadjanja_kultura;
-    });
-
-    db.object("/gastro_detalji_hrana/").valueChanges().subscribe((data_gastro_detalji_hrana) => {
-      this.interaktivna_mapa_gastro_hrana = data_gastro_detalji_hrana;
-    });
-
-    db.object("/gastro_detalji_pice/").valueChanges().subscribe((data_gastro_detalji_pice) => {
-      this.interaktivna_mapa_gastro_pice = data_gastro_detalji_pice;
-    });
-
-    db.object("/atrakcije/").valueChanges().subscribe((data_atrakcije) => {
-      this.interaktivna_mapa_atrakcije = data_atrakcije;
-    });
-    */
 
   }
 
@@ -516,9 +478,5 @@ export class InteraktivnaMapaPage {
 
   }
 
-  ionViewWillLeave()
-  {
-    this.map.remove();
-  }
 
 }

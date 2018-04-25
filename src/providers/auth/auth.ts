@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { ToastController } from 'ionic-angular';
+import { ToastController, Platform } from 'ionic-angular';
 import { Firebase } from '@ionic-native/firebase';
 import * as firebase from 'firebase';
 
@@ -14,7 +14,7 @@ export class AuthProvider {
   user_name: string;
   fb_response: any;
 
-  constructor(private afAuth: AngularFireAuth, private toastCtrl: ToastController, public firebase_plugin: Firebase) {
+  constructor(private afAuth: AngularFireAuth, private toastCtrl: ToastController, public firebase_plugin: Firebase, public platform: Platform) {
 
   }
 
@@ -88,6 +88,11 @@ export class AuthProvider {
 
       }
     });
+
+    if(this.platform.is('ios'))
+    {
+        this.firebase_plugin.grantPermission();
+    }
 
 
   }
