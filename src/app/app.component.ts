@@ -123,7 +123,7 @@ export class MyApp {
                       {
                         var notification_body:string = notification.aps.alert;
                       }
-                      
+
                     }
 
                     //Kad je aplikacija otvorena dati ćemo korisniku samo alert neki ili toast ovisi kaj će ljepse izgledati
