@@ -60,7 +60,7 @@ page-komunalno {
   .kumunalno_polja_obavezna
   {
     color: $plava_boja;
-    font-size: 0.5rem;
+    font-size: 0.9rem;
     text-align: center;
 
   }
@@ -73,6 +73,16 @@ page-komunalno {
   .item
   {
     background-color: transparent !important;
+  }
+
+  .span_upozorenje
+  {
+    color: #999;
+  }
+
+  .upozorenje_row
+  {
+    padding: 1em;
   }
 
 }

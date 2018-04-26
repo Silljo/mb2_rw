@@ -30,11 +30,21 @@
 
   <div *ngSwitchCase="'prijava'">
 
+    <ion-grid>
+      <ion-row>
+        <ion-col col-12 class="upozorenje_row">
+          <ion-icon name="alert" color="crvena"></ion-icon> <span class="span_upozorenje">Prije predaje prijave, provjerite da li je netko od korisnika već prijavio odabrani nedostatak u arhivi prijava.</span>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+
+
   <form [formGroup]="komunalno" (ngSubmit)="logForm()" class="form_transparent">
 
       <ion-list radio-group formControlName="hitnost" no-lines>
         <ion-list-header class="radio_header form_transparent">
-          Hitnost:
+          Hitnost*:
         </ion-list-header>
 
           <ion-item class="margine_prevelike form_transparent">
@@ -52,15 +62,15 @@
       </ion-list>
 
       <ion-item class="margine_prevelike form_transparent">
-        <ion-label>Mjesto</ion-label>
+        <ion-label>Mjesto*</ion-label>
         <ion-input type="text" formControlName="mjesto"></ion-input>
       </ion-item>
       <ion-item class="form_transparent">
-        <ion-label>Opis</ion-label>
+        <ion-label>Opis*</ion-label>
         <ion-textarea formControlName="opis"></ion-textarea>
       </ion-item>
       <ion-item class="form_transparent">
-        <ion-label>Kontakt (mob/tel)</ion-label>
+        <ion-label>Kontakt (mob/tel)*</ion-label>
         <ion-input type="number" formControlName="kontakt"></ion-input>
       </ion-item>
       <ion-item no-lines>
@@ -68,7 +78,6 @@
           <ion-card-header style="text-align:center;" (click)="slika_komunalno()">
             <ion-icon name="camera" color="plava"></ion-icon>
           </ion-card-header>
-          <!--<img style="width:100%;height:250px;border-radius:5px" [src]="_DomSanitizer.bypassSecurityTrustUrl(slika)" *ngIf="slika"/>-->
           <img [src]="this.slika_show" *ngIf="this.slika_show">
         </ion-card>
       </ion-item>

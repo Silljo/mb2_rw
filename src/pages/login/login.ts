@@ -15,6 +15,7 @@ import { Facebook } from '@ionic-native/facebook';
 export class LoginPage {
 
   user = {} as User;
+  fb_large_img: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public auth: AuthProvider, public facebook: Facebook,
               public events: Events, public loadingCtrl: LoadingController)
@@ -67,6 +68,8 @@ export class LoginPage {
 
     loading.present();
 
+
+
     this.facebook.login(['public_profile', 'email'])
       .then( response => {
 
@@ -75,7 +78,19 @@ export class LoginPage {
 
            firebase.auth().signInWithCredential(facebookCredential)
             .then((success) => {
-              this.auth.obrada_uspjesnog_logina(success.uid, success.email, success.photoURL, success.displayName).then(
+
+              var photo_large;
+
+              if(success.photoURL.includes("type=large"))
+              {
+                photo_large = success.photoURL;
+              }
+              else
+              {
+                photo_large = success.photoURL+"?type=large";
+              }
+
+              this.auth.obrada_uspjesnog_logina(success.uid, success.email, photo_large, success.displayName).then(
                 (finish =>
                   {
                     loading.dismiss();
@@ -83,6 +98,7 @@ export class LoginPage {
                     //Subscribamo ili ne ?
                     this.auth.subscribe_topics();
                     this.auth.token_update();
+
                   }),
                 (error =>   {loading.dismiss(); this.auth.obrada_neuspjesnog_logina(error);})
               );
@@ -99,6 +115,14 @@ export class LoginPage {
   reset_password()
   {
     this.navCtrl.push('ResetPasswordPage');
+  }
+
+  fb_large_img_dohvat()
+  {
+    //Ajmo po vecu sliku
+    this.facebook.api('me?fields=id,picture.width(500).height(500).as(picture_large)', []).then(profile => {
+        alert("jesam");
+    }).catch(error => {return});
   }
 
 }
