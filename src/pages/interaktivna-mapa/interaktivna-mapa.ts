@@ -205,6 +205,7 @@ export class InteraktivnaMapaPage {
 
                 marker.setTitle(item_smjestaj.naziv_objekta);
                 marker.setSnippet(item_smjestaj.opis + "\nAdresa: " + item_smjestaj.adresa);
+                
 
                 //Kad se klikne
                 marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(() => {

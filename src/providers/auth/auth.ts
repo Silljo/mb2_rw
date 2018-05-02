@@ -70,17 +70,6 @@ export class AuthProvider {
             logout: false
         });
 
-        var user = firebase.auth().currentUser;
-
-        user.updateProfile({
-          displayName: naziv,
-          photoURL: photo
-        }).then(function() {
-          // Update successful.
-        }).catch(function(error) {
-          // An error happened.
-        });
-
       }
     });
 
@@ -88,8 +77,6 @@ export class AuthProvider {
     {
         this.firebase_plugin.grantPermission();
     }
-
-
   }
 
   subscribe_topics()

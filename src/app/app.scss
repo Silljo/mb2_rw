@@ -263,6 +263,7 @@ page-atrakcije-detalji, page-gastro-detalji, page-smjestaj-detalji{
     border-radius: 50%;
     border: 1px #CCC solid;
     background-position: center;
+    background-size: cover;
   }
 
   .galerija_icon
@@ -274,6 +275,7 @@ page-atrakcije-detalji, page-gastro-detalji, page-smjestaj-detalji{
   .galerija_div
   {
     position: absolute;
+
     width: 100%;
     margin-top: -4.2em;
   }
