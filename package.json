@@ -101,7 +101,8 @@
       "cordova-plugin-camera": {
         "CAMERA_USAGE_DESCRIPTION": "Korištenje kamere za slikanje",
         "PHOTOLIBRARY_USAGE_DESCRIPTION": "Odabir slika iz galerije"
-      }
+      },
+      "com.hutchind.cordova.plugins.streamingmedia": {}
     },
     "platforms": [
       "android",
