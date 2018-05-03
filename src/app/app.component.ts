@@ -53,7 +53,8 @@ export class MyApp {
       { title: 'Interaktivna mapa', component: 'InteraktivnaMapaPage', icon: 'ios-map', icon_color: 'bijela'},
       { title: 'Posebnosti', component: 'AtrakcijePage', icon: 'ios-camera', icon_color: 'siva'},
       { title: 'Duhovni kutak', component: DuhovniKutakPage, icon: 'md-body', icon_color: 'crna'},
-      { title: 'Komunalno', component: 'KomunalnoPage', icon: 'md-warning', icon_color: 'plava'}
+      { title: 'Komunalno', component: 'KomunalnoPage', icon: 'md-warning', icon_color: 'plava'},
+      { title: 'Oglasna ploča', component: 'OglasnaPlocaPage', icon: 'md-albums', icon_color: 'crvena_tamna'}
     ];
 
   }
