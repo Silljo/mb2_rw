@@ -64,26 +64,10 @@ export class AuthProvider {
       else
       {
 
-        if(naziv == null){naziv = email.split("@")[0];}
-        if(photo == null || photo == ''){photo = 'https://firebasestorage.googleapis.com/v0/b/mbistrica-c5bd3.appspot.com/o/mblogo.png?alt=media&token=32a7650c-7a01-4b51-965a-7e6c17e7fcb9';}
-
         firebase.database().ref('/user_profiles/' + uid).update({
             uid: uid,
             email: email,
-            slika: photo,
-            display_name: naziv,
             logout: false
-        });
-
-        var user = firebase.auth().currentUser;
-
-        user.updateProfile({
-          displayName: naziv,
-          photoURL: photo
-        }).then(function() {
-          // Update successful.
-        }).catch(function(error) {
-          // An error happened.
         });
 
       }
@@ -93,8 +77,6 @@ export class AuthProvider {
     {
         this.firebase_plugin.grantPermission();
     }
-
-
   }
 
   subscribe_topics()

@@ -105,8 +105,8 @@
       "com.hutchind.cordova.plugins.streamingmedia": {}
     },
     "platforms": [
-      "android",
-      "ios"
+      "ios",
+      "android"
     ]
   }
 }
