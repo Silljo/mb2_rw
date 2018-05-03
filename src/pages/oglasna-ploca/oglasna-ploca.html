@@ -1,0 +1,32 @@
+<ion-header>
+
+  <ion-navbar color="crvena_tamna">
+    <button ion-button menuToggle >
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Oglasna ploča
+      <span class="navbar_small_subtitle">KORISNE INFORMACIJE</span>
+    </ion-title>
+
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="content_patern">
+
+  <ion-card *ngFor="let oglas of oglasi | async">
+    <ion-item>
+
+        <ion-icon class="alert_icon_oglas" item-left name="md-alert" color="crvena_tamna"></ion-icon>
+
+      <h2>{{oglas.naslov}}</h2>
+    </ion-item>
+
+    <img src="{{oglas.slika}}"/>
+    <ion-card-content>
+      <p>{{oglas.opis}}</p>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
