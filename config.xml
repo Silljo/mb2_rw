@@ -98,10 +98,10 @@
     <platform name="ios">
         <plugin name="cordova-custom-config" version="*" />
         <custom-config-file parent="NSLocationAlwaysUsageDescription" platform="ios" target="*-Info.plist">
-            <string>My custom message for always using location.</string>
+            <string>Porebna je lokacija korisnika za punu funkcionalnost aplikacije</string>
         </custom-config-file>
         <custom-config-file parent="NSLocationWhenInUseUsageDescription" platform="ios" target="*-Info.plist">
-            <string>My custom message for using location when in use.</string>
+            <string>Porebna je lokacija korisnika za punu funkcionalnost aplikacije</string>
         </custom-config-file>
     </platform>
     <plugin name="cordova-plugin-googlemaps" spec="^2.2.9">
@@ -111,7 +111,7 @@
         <variable name="ANDROID_SUPPORT_V4_VERSION" value="24.1.0" />
     </plugin>
     <plugin name="cordova-plugin-camera" spec="^4.0.3">
-        <variable name="CAMERA_USAGE_DESCRIPTION" value="Korištenje kamere za slikanje" />
+        <variable name="CAMERA_USAGE_DESCRIPTION" value="Korištenje kamere za punu funkcionalnost aplikacije" />
         <variable name="PHOTOLIBRARY_USAGE_DESCRIPTION" value="Odabir slika iz galerije" />
     </plugin>
     <allow-navigation href="http://192.168.1.209:8100" />

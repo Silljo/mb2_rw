@@ -161,7 +161,7 @@ export class InteraktivnaMapaPage {
      //Filanje sa regularnim informacijama
      for (let item of this.interaktivna_mapa_opcenito) {
 
-       if(item)
+       if(item && item.lat != '' && item.lng != '')
        {
 
        this.map.addMarker({
@@ -172,7 +172,7 @@ export class InteraktivnaMapaPage {
            this.markers_opcenito = this.markers_opcenito.concat(marker);
 
            marker.setTitle(item.naziv);
-           marker.setSnippet(item.opis + "\nAdresa: " + item.adresa);
+           marker.setSnippet(" " + item.opis + "\n\rAdresa: " + item.adresa);
 
            //Kad se klikne
            marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(() => {
@@ -193,7 +193,7 @@ export class InteraktivnaMapaPage {
 
         for (let item_smjestaj of this.interaktivna_mapa_smjestaj) {
 
-          if(item_smjestaj)
+          if(item_smjestaj && item_smjestaj.location_lat != '' && item_smjestaj.location_lat != '')
           {
 
             this.map.addMarker({
@@ -204,8 +204,8 @@ export class InteraktivnaMapaPage {
                 this.markers_smjestaj = this.markers_smjestaj.concat(marker);
 
                 marker.setTitle(item_smjestaj.naziv_objekta);
-                marker.setSnippet(item_smjestaj.opis + "\nAdresa: " + item_smjestaj.adresa);
-                
+                marker.setSnippet(" " + item_smjestaj.opis_short + "\n\rAdresa: " + item_smjestaj.adresa + "\n\rZa više detalja pritisnite ovdje.");
+
 
                 //Kad se klikne
                 marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(() => {
@@ -227,7 +227,7 @@ export class InteraktivnaMapaPage {
       this.db.object("/dogadjanja_sport/").valueChanges().subscribe((data_dogadjanja_sport) => {this.interaktivna_mapa_dogadjanja_sport = data_dogadjanja_sport;
         for (let item_dogadjanja_sport of this.interaktivna_mapa_dogadjanja_sport) {
 
-          if(item_dogadjanja_sport)
+          if(item_dogadjanja_sport && item_dogadjanja_sport.location_lat != '' && item_dogadjanja_sport.location_lat != '')
           {
             this.map.addMarker({
 
@@ -237,7 +237,7 @@ export class InteraktivnaMapaPage {
                   this.markers_dogadjanja = this.markers_dogadjanja.concat(marker);
 
                   marker.setTitle(item_dogadjanja_sport.naziv);
-                  marker.setSnippet(item_dogadjanja_sport.opis + "\nLokacija: " + item_dogadjanja_sport.lokacija);
+                  marker.setSnippet(" " + item_dogadjanja_sport.opis_short + "\n\rLokacija: " + item_dogadjanja_sport.lokacija);
 
                   //Kad se klikne
                   marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(() => {
@@ -254,7 +254,7 @@ export class InteraktivnaMapaPage {
       this.db.object("/dogadjanja_zabava/").valueChanges().subscribe((data_dogadjanja_zabava) => {this.interaktivna_mapa_dogadjanja_zabava = data_dogadjanja_zabava;
         for (let item_dogadjanja_zabava of this.interaktivna_mapa_dogadjanja_zabava) {
 
-          if(item_dogadjanja_zabava)
+          if(item_dogadjanja_zabava && item_dogadjanja_zabava.location_lat != '' && item_dogadjanja_zabava.location_lon != '')
           {
             this.map.addMarker({
 
@@ -264,7 +264,7 @@ export class InteraktivnaMapaPage {
                   this.markers_dogadjanja = this.markers_dogadjanja.concat(marker);
 
                   marker.setTitle(item_dogadjanja_zabava.naziv);
-                  marker.setSnippet(item_dogadjanja_zabava.opis + "\nLokacija: " + item_dogadjanja_zabava.lokacija);
+                  marker.setSnippet(" " + item_dogadjanja_zabava.opis_short + "\n\rLokacija: " + item_dogadjanja_zabava.lokacija);
 
                   //Kad se klikne
                   marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(() => {
@@ -282,7 +282,7 @@ export class InteraktivnaMapaPage {
       this.db.object("/dogadjanja_kultura/").valueChanges().subscribe((data_dogadjanja_kultura) => {this.interaktivna_mapa_dogadjanja_kultura = data_dogadjanja_kultura;
         for (let item_dogadjanja_kultura of this.interaktivna_mapa_dogadjanja_kultura) {
 
-          if(item_dogadjanja_kultura)
+          if(item_dogadjanja_kultura && item_dogadjanja_kultura.location_lat != '' && item_dogadjanja_kultura.location_lon != '')
           {
             this.map.addMarker({
 
@@ -292,7 +292,7 @@ export class InteraktivnaMapaPage {
                   this.markers_dogadjanja = this.markers_dogadjanja.concat(marker);
 
                   marker.setTitle(item_dogadjanja_kultura.naziv);
-                  marker.setSnippet(item_dogadjanja_kultura.opis + "\nLokacija: " + item_dogadjanja_kultura.lokacija);
+                  marker.setSnippet(" " + item_dogadjanja_kultura.opis_short + "\n\rLokacija: " + item_dogadjanja_kultura.lokacija);
 
                   //Kad se klikne
                   marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(() => {
@@ -310,7 +310,7 @@ export class InteraktivnaMapaPage {
       this.db.object("/gastro_detalji_hrana/").valueChanges().subscribe((data_gastro_detalji_hrana) => {this.interaktivna_mapa_gastro_hrana = data_gastro_detalji_hrana;
         for (let item_hrana of this.interaktivna_mapa_gastro_hrana) {
 
-          if(item_hrana)
+          if(item_hrana && item_hrana.location_lat != '' && item_hrana.location_lat != '')
           {
             this.map.addMarker({
 
@@ -320,7 +320,7 @@ export class InteraktivnaMapaPage {
                 this.markers_gastro = this.markers_gastro.concat(marker);
 
                 marker.setTitle(item_hrana.naziv_objekta);
-                marker.setSnippet(item_hrana.opis + "\nAdresa: " + item_hrana.adresa);
+                marker.setSnippet(" " + item_hrana.opis_short + "\n\rAdresa: " + item_hrana.adresa + "\n\rZa više detalja pritisnite ovdje.");
 
                 //Kad se klikne
                 marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(() => {
@@ -342,7 +342,7 @@ export class InteraktivnaMapaPage {
       this.db.object("/gastro_detalji_pice/").valueChanges().subscribe((data_gastro_detalji_pice) => {this.interaktivna_mapa_gastro_pice = data_gastro_detalji_pice;
         for (let item_pice of this.interaktivna_mapa_gastro_pice) {
 
-          if(item_pice)
+          if(item_pice && item_pice.location_lat != '' && item_pice.location_lon != '')
           {
             this.map.addMarker({
 
@@ -352,7 +352,7 @@ export class InteraktivnaMapaPage {
                 this.markers_gastro = this.markers_gastro.concat(marker);
 
                 marker.setTitle(item_pice.naziv_objekta);
-                marker.setSnippet(item_pice.opis + "\nAdresa: " + item_pice.adresa);
+                marker.setSnippet(" " + item_pice.opis_short + "\n\rAdresa: " + item_pice.adresa + "\n\rZa više detalja pritisnite ovdje.");
 
                 //Kad se klikne
                 marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(() => {
@@ -374,7 +374,7 @@ export class InteraktivnaMapaPage {
       this.db.object("/atrakcije/").valueChanges().subscribe((data_atrakcije) => {this.interaktivna_mapa_atrakcije = data_atrakcije;
         for (let item_atrakcije of this.interaktivna_mapa_atrakcije) {
 
-          if(item_atrakcije)
+          if(item_atrakcije && item_atrakcije.location_lat != '' && item_atrakcije.location_lon != '')
           {
             this.map.addMarker({
 

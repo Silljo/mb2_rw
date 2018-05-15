@@ -7,7 +7,7 @@ import { LoginPage } from '../pages/login/login';
 import { DuhovniKutakPage } from '../pages/duhovni-kutak/duhovni-kutak';
 import { DogadjanjaPage } from '../pages/dogadjanja/dogadjanja';
 
-import { StreamingMedia } from '@ionic-native/streaming-media';
+import { StreamingMedia, StreamingVideoOptions } from '@ionic-native/streaming-media';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { ConnectivityServiceProvider } from '../providers/connectivity-service/connectivity-service';
@@ -221,6 +221,19 @@ export class MyApp {
       }
     };
     this.streamingMedia.playAudio(audioUrl, options);
+  }
+
+  open_livestream()
+  {
+      var video = "rtmp://cdn-003.whatsupcams.com/live/hr_marbistrica01";
+
+      let options: StreamingVideoOptions = {
+        successCallback: () => { console.log('Video played') },
+        errorCallback: (e) => { alert(e) },
+        orientation: 'landscape'
+      };
+
+      this.streamingMedia.playVideo(video, options);
   }
 
   logout()
